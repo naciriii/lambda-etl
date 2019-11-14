@@ -1,4 +1,3 @@
-const AbstractImportServices = require('./lib/AbstractImportService')
+const AbstractImportService = require('./lib/AbstractImportService')
 
 module.exports = AbstractImportService
-
