@@ -1,0 +1,34 @@
+{
+  "name": "lambda-etl",
+  "version": "1.0.0",
+  "description": "Perform ETL with files through stream and lambda handlers",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/**/*.test.js --recursive --slow 0 --exit",
+    "lint": "standard --fix"
+  },
+  "standard": {
+    "ignore": [
+      "test/"
+    ]
+  },
+  "keywords": [
+    "lambda",
+    "import",
+    "csv",
+    "json"
+  ],
+  "author": "Nacer Nsiri",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.571.0",
+    "csv-parser": "^2.3.2",
+    "stream-json": "^1.3.1",
+    "through2": "^3.0.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.2",
+    "standard": "^14.3.1"
+  }
+}
