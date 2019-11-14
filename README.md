@@ -53,7 +53,7 @@ class MyCustomImportService extends AbstractImportService {
   }
 }
 ```
-### Usage
+#### Usage
 ```js
 let importService = new MyCustomImportService()
 let bucketName = "uploads"
