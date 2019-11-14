@@ -58,7 +58,7 @@ class MyCustomImportService extends AbstractImportService {
 let importService = new MyCustomImportService()
 let bucketName = "uploads"
 let filname = "data.json"
-importService.importData(bucketName, filename))
+importService.importData(bucketName, filename)
 ```
 
 
