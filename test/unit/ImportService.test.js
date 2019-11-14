@@ -1,5 +1,6 @@
 const AbstractImportService = require('../../')
 const chai = require('chai')
+const sinon = require('sinon')
 const assert = chai.assert
 
 describe('Import Service test suite', function () {
@@ -18,6 +19,23 @@ describe('Import Service test suite', function () {
       assert.typeOf(c.getStrategy, 'function')
       assert.typeOf(c.importData, 'function')
       
+
+  })
+  it('Should call correct methods', function() {
+    let c = new class extends AbstractImportService {
+
+    }
+      let getImportHandlerSpy = sinon.spy(c,'getImportHandler')
+      let getLineProcessorCallbackSpy = sinon.spy(c,'getLineProcessorCallback')
+      let getStrategySpy = sinon.spy(c,'getStrategy')
+      c.importData("fakeBucket","fakeKey.json")
+      assert.isTrue(getImportHandlerSpy.calledOnce)
+      assert.isTrue(getLineProcessorCallbackSpy.calledOnceWithExactly('json'))
+      assert.isTrue(getStrategySpy.calledOnceWithExactly('json'))
+
+
+
+
 
   })
 })
