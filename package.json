@@ -20,6 +20,10 @@
   ],
   "author": "Nacer Nsiri",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/naciriii/lambda-etl.git"
+  },
   "dependencies": {
     "aws-sdk": "^2.571.0",
     "csv-parser": "^2.3.2",
