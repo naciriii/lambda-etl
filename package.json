@@ -4,7 +4,7 @@
   "description": "Perform ETL with files through stream and lambda handlers",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/**/*.test.js --recursive --slow 0 --exit",
+    "test": "mocha test/**/*.test.js --recursive --slow 0 --reporter mocha-lcov-reporter --exit",
     "lint": "standard --fix"
   },
   "standard": {
