@@ -20,6 +20,13 @@ This module provide an extendable abstract class, thus the child class will over
 
 ### Example
 #### Initialization
+After Setting up aws credentials 
+```js
+export AWS_ACCESS_KEY_ID="Your AWS Access Key ID"
+export AWS_SECRET_ACCESS_KEY="Your AWS Secret Access Key"
+export AWS_REGION="us-east-1"
+```
+
 ```js
 const AbstractImportService = require('lambda-etl')
 
