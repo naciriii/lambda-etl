@@ -1,6 +1,6 @@
 {
   "name": "lambda-etl",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Perform ETL with files through stream and lambda handlers",
   "main": "index.js",
   "scripts": {
