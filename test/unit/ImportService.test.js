@@ -21,18 +21,19 @@ describe('Import Service test suite', function () {
       
 
   })
-  it('Should call correct methods', function() {
+  it('Should call correct methods', async function() {
     let c = new class extends AbstractImportService {
+     
+    
 
     }
       let getImportHandlerSpy = sinon.spy(c,'getImportHandler')
       let getLineProcessorCallbackSpy = sinon.spy(c,'getLineProcessorCallback')
       let getStrategySpy = sinon.spy(c,'getStrategy')
-      let initSpy = sinon.spy(c, 'init')
+      
       c.importData("fakeBucket",{key: 'FakeKey.json',eTag: 'testKeyId', size: '500'})
       assert.isTrue(getStrategySpy.calledOnceWithExactly('json'))
-      assert.isTrue(initSpy.calledOnceWithExactly({key: 'FakeKey.json',eTag: 'testKeyId', size: '500'}))
-      assert.isTrue(getImportHandlerSpy.calledOnce)
+      assert.isTrue(getImportHandlerSpy.called, "Import Handler Was not called")
       assert.isTrue(getLineProcessorCallbackSpy.calledOnceWithExactly('json'))
 
 
