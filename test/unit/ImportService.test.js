@@ -6,7 +6,7 @@ const assert = chai.assert
 describe('Import Service test suite', function () {
   it('Should not be able to instanciate abstract class', function () {
     assert.Throw(function () {
-      const ais = new AbstractImportService()
+      new AbstractImportService()
     }, Error, 'cannot instanciate Abstract class')
   })
 
@@ -28,10 +28,12 @@ describe('Import Service test suite', function () {
       let getImportHandlerSpy = sinon.spy(c,'getImportHandler')
       let getLineProcessorCallbackSpy = sinon.spy(c,'getLineProcessorCallback')
       let getStrategySpy = sinon.spy(c,'getStrategy')
-      c.importData("fakeBucket","fakeKey.json")
+      let initSpy = sinon.spy(c, 'init')
+      c.importData("fakeBucket",{key: 'FakeKey.json',eTag: 'testKeyId', size: '500'})
+      assert.isTrue(getStrategySpy.calledOnceWithExactly('json'))
+      assert.isTrue(initSpy.calledOnceWithExactly({key: 'FakeKey.json',eTag: 'testKeyId', size: '500'}))
       assert.isTrue(getImportHandlerSpy.calledOnce)
       assert.isTrue(getLineProcessorCallbackSpy.calledOnceWithExactly('json'))
-      assert.isTrue(getStrategySpy.calledOnceWithExactly('json'))
 
 
 
