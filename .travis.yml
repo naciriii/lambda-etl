@@ -1,6 +1,41 @@
 language: node_js
+os: linux
+sudo: false
+cache: 
+  - directories:
+    - node_modules
 node_js:
 - '12'
 - '11'
 - '10'
+stages:
+  - install
+  - lint
+  - test
+  - name: deploy
+    if: branch = master
+jobs:
+  include:
+    - stage: install
+      script: npm ci
+    - stage: lint
+      script: npm run lint-check
+    - stage: test
+      script: npm test
+    - stage: deploy
+      deploy:
+        script: skip
+        provider: npm
+        email: $NPM_DEPLOY_MAIL
+        api_key: $NPM_DEPLOY_API_KEY
+        on:
+          tags: true
+       
+            
+
+      
+    
+          
+           
+
 
