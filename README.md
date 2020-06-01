@@ -39,6 +39,17 @@ class MyCustomImportService extends AbstractImportService {
   }
 
   /**
+   * @param {Object} file file to import
+   * Initialize ETL process based on ImportTrack Model or whatever
+   */
+  async init(file) {
+    /**
+     * Initialize a new Row with file information and start time
+     */
+    return this.ImportModel.create({fileSize: file.size, filname: file.name, startedAt: Date.now()})
+  }
+  
+  /**
    * @returns {Function} Parsed File line transformation and formatting
    */
   getLineProcessorCallback (extension) {
@@ -58,11 +69,23 @@ class MyCustomImportService extends AbstractImportService {
       }
     }
   }
+
+   /**
+   * @param {Object} status result status of etl process
+   * Initialize ETL process based on ImportTrack Model or whatever
+   */
+  async finish(status) {
+    /**
+     * Update DB ETL track row and mark as finished and log errors number 
+     * if any
+     */ 
+    return this.ImportModel.update({finishedAt: Date.now(), errors: status.errors})
+  }
 }
 ```
 #### Usage
 ```js
-let importService = new MyCustomImportService()
+let importService = new MyCustomImportService(new MyImportTrackModel())
 let bucketName = "uploads"
 let filname = "data.json"
 importService.importData(bucketName, filename)
