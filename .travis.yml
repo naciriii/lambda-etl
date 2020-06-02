@@ -11,8 +11,7 @@ stages:
   - install
   - lint
   - test
-  - name: deploy
-    if: branch = master
+  - deploy
 jobs:
   include:
     - stage: install
@@ -27,6 +26,8 @@ jobs:
         provider: npm
         email: $NPM_DEPLOY_MAIL
         api_key: $NPM_DEPLOY_API_KEY
+        on:
+          tags: true
        
             
 
