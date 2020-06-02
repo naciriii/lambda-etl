@@ -1,6 +1,5 @@
 language: node_js
 os: linux
-sudo: false
 cache: 
   - directories:
     - node_modules
@@ -23,8 +22,8 @@ jobs:
     - stage: test
       script: npm test
     - stage: deploy
+      script: skip
       deploy:
-        script: skip
         provider: npm
         email: $NPM_DEPLOY_MAIL
         api_key: $NPM_DEPLOY_API_KEY
