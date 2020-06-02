@@ -11,7 +11,8 @@ stages:
   - install
   - lint
   - test
-  - deploy
+  - name: deploy
+    if: branch = master
 jobs:
   include:
     - stage: install
@@ -21,13 +22,8 @@ jobs:
     - stage: test
       script: npm test
     - stage: deploy
-      script: skip
-      deploy:
-        provider: npm
-        email: $NPM_DEPLOY_MAIL
-        api_key: $NPM_DEPLOY_API_KEY
-        on:
-          branch: master
+      script: echo "Not set yet"
+       
 
        
             
